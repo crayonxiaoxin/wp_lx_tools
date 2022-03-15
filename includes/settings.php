@@ -15,43 +15,43 @@ function lx_tools_settings_init()
     $section_general = "lx_tools_section_general";
     $section_update = "lx_tools_section_update";
     $section_posts = "lx_tools_section_posts";
-    lx_setting_section($section_general, '常规设置');
-    lx_setting_section($section_update, '更新设置');
-    lx_setting_section($section_posts, '文章设置');
+    lx_setting_section($section_general, __('常规设置','lx_tools'));
+    lx_setting_section($section_update, __('更新设置','lx_tools'));
+    lx_setting_section($section_posts, __('文章设置','lx_tools'));
     // 添加字段
     lx_setting_field(
         LxToolsFileds::$hide_admin_bar,
-        '隐藏顶栏',
+        __('隐藏顶栏','lx_tools'),
         'lx_field_cb_checkbox',
         $section_general
     );
     lx_setting_field(
         LxToolsFileds::$hide_admin_footer,
-        '隐藏 Admin Footer',
+        __('隐藏 Admin Footer','lx_tools'),
         'lx_field_cb_checkbox',
         $section_general
     );
     lx_setting_field(
         LxToolsFileds::$diabled_auto_update,
-        '禁用自动更新',
+        __('禁用自动更新','lx_tools'),
         'lx_field_cb_checkbox',
         $section_update
     );
     lx_setting_field(
         LxToolsFileds::$hide_update_tips,
-        '隐藏WP更新提示',
+        __('隐藏WP更新提示','lx_tools'),
         'lx_field_cb_checkbox',
         $section_update
     );
     lx_setting_field(
         LxToolsFileds::$hide_plugin_update_tips,
-        '隐藏插件更新提示',
+        __('隐藏插件更新提示','lx_tools'),
         'lx_field_cb_checkbox',
         $section_update
     );
     lx_setting_field(
         LxToolsFileds::$support_thumbnail,
-        '支持缩略图',
+        __('支持缩略图','lx_tools'),
         'lx_field_cb_checkbox',
         $section_posts
     );

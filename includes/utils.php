@@ -5,7 +5,7 @@ function lx_setting_section($section_key, $section_name, $callback = 'empty_cb')
 {
     add_settings_section(
         $section_key,
-        __($section_name, LxToolsFileds::$page),
+        $section_name,
         $callback,
         LxToolsFileds::$page
     );
@@ -16,7 +16,7 @@ function lx_setting_field($filed, $name, $callback, $section_name)
 {
     add_settings_field(
         $filed,
-        __($name, LxToolsFileds::$page),
+        $name,
         $callback,
         LxToolsFileds::$page,
         $section_name,
