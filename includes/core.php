@@ -27,7 +27,20 @@ if (lx_tools_option(LxToolsFileds::$hide_admin_bar)) {
 }
 // 禁用自动更新
 if (lx_tools_option(LxToolsFileds::$diabled_auto_update)) {
+    // 关闭 自动更新
     add_filter('automatic_updater_disabled', '__return_true');
+    // 关闭 更新检查 定时任务
+    remove_action('init', 'wp_schedule_update_checks');
+    // 移除 已有的版本检查 定时任务
+    wp_clear_scheduled_hook('wp_version_check');
+    // 移除 插件更新 定时任务
+    wp_clear_scheduled_hook('wp_update_plugins');
+    // 移除 主题更新 定时任务
+    wp_clear_scheduled_hook('wp_update_themes');
+    // 移除 已有的自动更新 定时任务
+    wp_clear_scheduled_hook('wp_maybe_auto_update');
+    // 移除 后台内核 更新检查
+    remove_action( 'admin_init', '_maybe_update_core' );
 }
 // 禁用WP更新提示
 if (lx_tools_option(LxToolsFileds::$hide_update_tips)) {
