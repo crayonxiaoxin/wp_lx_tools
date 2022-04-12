@@ -161,7 +161,7 @@ add_action('admin_menu', 'lx_tools_options_page');
 
 function lx_tools_options_page()
 {
-    add_menu_page('小鑫工具', '小鑫工具', 'manage_options', LxToolsFileds::$page, 'lx_tools_options_page_html');
+    add_menu_page('小鑫工具（lx_tools）', '小鑫工具', 'manage_options', LxToolsFileds::$page, 'lx_tools_options_page_html');
 }
 
 // 设置页面 - UI
