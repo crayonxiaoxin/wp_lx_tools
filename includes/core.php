@@ -25,8 +25,26 @@
 if (lx_tools_option(LxToolsFileds::$hide_admin_bar)) {
     add_filter('show_admin_bar', '__return_false');
 }
+// 禁用登录页语言切换器
+if (lx_tools_option(LxToolsFileds::$disabled_login_lang_switcher)) {
+    add_filter('login_display_language_dropdown', '__return_false');
+}
+// 隐藏后台帮助选项
+if (lx_tools_option(LxToolsFileds::$hide_help_tabs)) {
+    add_action('in_admin_header', function () {
+        global $current_screen;
+        $current_screen->remove_help_tabs();
+    });
+}
+// 隐藏后台显示选项
+if (lx_tools_option(LxToolsFileds::$hide_screen_tabs)) {
+    add_action('in_admin_header', function () {
+        add_filter('screen_options_show_screen', '__return_false');
+        add_filter('hidden_columns', '__return_empty_array');
+    });
+}
 // 禁用自动更新
-if (lx_tools_option(LxToolsFileds::$diabled_auto_update)) {
+if (lx_tools_option(LxToolsFileds::$disabled_auto_update)) {
     // 关闭 自动更新
     add_filter('automatic_updater_disabled', '__return_true');
     // 关闭 更新检查 定时任务
@@ -40,17 +58,17 @@ if (lx_tools_option(LxToolsFileds::$diabled_auto_update)) {
     // 移除 已有的自动更新 定时任务
     wp_clear_scheduled_hook('wp_maybe_auto_update');
     // 移除 后台内核 更新检查
-    remove_action( 'admin_init', '_maybe_update_core' );
+    remove_action('admin_init', '_maybe_update_core');
     // 移除 后台插件 更新检查 
-    remove_action( 'load-plugins.php', 'wp_update_plugins' );
-    remove_action( 'load-update.php', 'wp_update_plugins' );
-    remove_action( 'load-update-core.php', 'wp_update_plugins' );
-    remove_action( 'admin_init', '_maybe_update_plugins' );
+    remove_action('load-plugins.php', 'wp_update_plugins');
+    remove_action('load-update.php', 'wp_update_plugins');
+    remove_action('load-update-core.php', 'wp_update_plugins');
+    remove_action('admin_init', '_maybe_update_plugins');
     // 移除 后台主题 更新检查 
-    remove_action( 'load-themes.php', 'wp_update_themes' );
-    remove_action( 'load-update.php', 'wp_update_themes' );
-    remove_action( 'load-update-core.php', 'wp_update_themes' );
-    remove_action( 'admin_init', '_maybe_update_themes' );
+    remove_action('load-themes.php', 'wp_update_themes');
+    remove_action('load-update.php', 'wp_update_themes');
+    remove_action('load-update-core.php', 'wp_update_themes');
+    remove_action('admin_init', '_maybe_update_themes');
 }
 // 禁用WP更新提示
 if (lx_tools_option(LxToolsFileds::$hide_update_tips)) {
@@ -75,4 +93,69 @@ if (lx_tools_option(LxToolsFileds::$hide_admin_footer)) {
 // 支持文章缩略图
 if (lx_tools_option(LxToolsFileds::$support_thumbnail)) {
     add_theme_support('post-thumbnails');
+}
+
+// 禁用自动生成缩略图
+if (lx_tools_option(LxToolsFileds::$disabled_gen_img_thumb)) {
+    function lx_tools_disabled_gen_img_thumb($sizes)
+    {
+        unset($sizes['thumbnail']);
+        return $sizes;
+    }
+    add_action('intermediate_image_sizes_advanced', 'lx_tools_disabled_gen_img_thumb');
+}
+// 禁用自动生成中图
+if (lx_tools_option(LxToolsFileds::$disabled_gen_img_medium)) {
+    function lx_tools_disabled_gen_img_medium($sizes)
+    {
+        unset($sizes['medium']);
+        return $sizes;
+    }
+    add_action('intermediate_image_sizes_advanced', 'lx_tools_disabled_gen_img_medium');
+}
+// 禁用自动生成大图
+if (lx_tools_option(LxToolsFileds::$disabled_gen_img_large)) {
+    function lx_tools_disabled_gen_img_large($sizes)
+    {
+        unset($sizes['large']);
+        return $sizes;
+    }
+    add_action('intermediate_image_sizes_advanced', 'lx_tools_disabled_gen_img_large');
+    add_filter('big_image_size_threshold', '__return_false');
+}
+// 禁用自动生成大图 2x
+if (lx_tools_option(LxToolsFileds::$disabled_gen_img_large_2x)) {
+    function lx_tools_disabled_gen_img_large_2x($sizes)
+    {
+        unset($sizes['2048x2048']);
+        return $sizes;
+    }
+    add_action('intermediate_image_sizes_advanced', 'lx_tools_disabled_gen_img_large_2x');
+}
+// 禁用自动生成中大图
+if (lx_tools_option(LxToolsFileds::$disabled_gen_img_medium_large)) {
+    function lx_tools_disabled_gen_img_medium_large($sizes)
+    {
+        unset($sizes['medium_large']);
+        return $sizes;
+    }
+    add_action('intermediate_image_sizes_advanced', 'lx_tools_disabled_gen_img_medium_large');
+}
+// 禁用自动生成中大图 2x
+if (lx_tools_option(LxToolsFileds::$disabled_gen_img_medium_large_2x)) {
+    function lx_tools_disabled_gen_img_medium_large_2x($sizes)
+    {
+        unset($sizes['1536x1536']);
+        return $sizes;
+    }
+    add_action('intermediate_image_sizes_advanced', 'lx_tools_disabled_gen_img_medium_large_2x');
+}
+// 禁用自动生成其他尺寸图
+if (lx_tools_option(LxToolsFileds::$disabled_gen_img_other_sizes)) {
+    function lx_tools_disabled_gen_img_other_sizes()
+    {
+        remove_image_size('post-thumbnail'); // disable set_post_thumbnail_size() 
+        remove_image_size('another-size');   // disable other add image sizes
+    }
+    add_action('init', 'lx_tools_disabled_gen_img_other_sizes');
 }

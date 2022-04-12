@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Plugin Name:       Lx Tools
- * Plugin URI:        https://github.com/crayonxiaoxin
- * Description:       Handle the basics with this plugin.
- * Version:           0.0.1
+ * Plugin Name:       Lx Tools（小鑫工具）
+ * Plugin URI:        https://github.com/crayonxiaoxin/wp_lx_tools
+ * Description:       常用快速设置。
+ * Version:           0.0.2
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            crayonxiaoxin
@@ -13,7 +13,7 @@
  * Domain Path:       /languages
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Update URI:        https://github.com/crayonxiaoxin
+ * Update URI:        https://github.com/crayonxiaoxin/wp_lx_tools
  */
 
 // 加载 - 核心文件 
