@@ -4,7 +4,7 @@
  * Plugin Name:       Lx Tools（小鑫工具）
  * Plugin URI:        https://github.com/crayonxiaoxin/wp_lx_tools
  * Description:       常用快速设置。
- * Version:           0.0.2
+ * Version:           0.0.3
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            crayonxiaoxin

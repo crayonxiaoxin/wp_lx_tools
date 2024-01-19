@@ -17,10 +17,12 @@ function lx_tools_settings_init()
     $section_update = "lx_tools_section_update";
     $section_posts = "lx_tools_section_posts";
     $section_upload_imgs = "lx_tools_section_upload_imgs";
+    $section_sitemaps = "lx_tools_section_sitemaps";
     lx_tools_setting_section($section_general, __('常规设置', 'lx_tools'));
     lx_tools_setting_section($section_update, __('更新设置', 'lx_tools'));
     lx_tools_setting_section($section_posts, __('文章设置', 'lx_tools'));
     lx_tools_setting_section($section_upload_imgs, __('图片设置', 'lx_tools'));
+    lx_tools_setting_section($section_sitemaps, __('Sitemap 设置', 'lx_tools'));
 
     // 添加字段
     lx_tools_setting_field(
@@ -90,6 +92,13 @@ function lx_tools_settings_init()
         $section_posts,
         '开启文章缩略图支持'
     );
+    lx_tools_setting_field(
+        LxToolsFileds::$disabled_feed,
+        __('关闭 Feed', 'lx_tools'),
+        'lx_tools_field_cb_checkbox',
+        $section_posts,
+        '关闭 Feed，防止被采集'
+    );
 
 
     lx_tools_setting_field(
@@ -141,6 +150,53 @@ function lx_tools_settings_init()
         $section_upload_imgs,
         '禁用自动生成其他尺寸图，例如由 `set_post_thumbnail_size()` 或 `add_image_size()` 生成的'
     );
+
+
+    lx_tools_setting_field(
+        LxToolsFileds::$disabled_sitemap,
+        __('彻底关闭', 'lx_tools'),
+        'lx_tools_field_cb_checkbox',
+        $section_sitemaps,
+        '关闭 sitemap'
+    );
+    lx_tools_setting_field(
+        LxToolsFileds::$disabled_sitemap_users,
+        __('隐藏用户', 'lx_tools'),
+        'lx_tools_field_cb_checkbox',
+        $section_sitemaps,
+        '在 sitemap 中隐藏用户列表，防止用户名称泄露'
+    );
+    lx_tools_setting_field(
+        LxToolsFileds::$disabled_sitemap_posts,
+        __('隐藏文章', 'lx_tools'),
+        'lx_tools_field_cb_checkbox',
+        $section_sitemaps,
+        '在 sitemap 中隐藏文章列表'
+    );
+    lx_tools_setting_field(
+        LxToolsFileds::$disabled_sitemap_pages,
+        __('隐藏页面', 'lx_tools'),
+        'lx_tools_field_cb_checkbox',
+        $section_sitemaps,
+        '在 sitemap 中隐藏页面列表'
+    );
+    lx_tools_setting_field(
+        LxToolsFileds::$disabled_sitemap_categories,
+        __('隐藏分类', 'lx_tools'),
+        'lx_tools_field_cb_checkbox',
+        $section_sitemaps,
+        '在 sitemap 中隐藏分类列表'
+    );
+    lx_tools_setting_field(
+        LxToolsFileds::$disabled_sitemap_tags,
+        __('隐藏分类', 'lx_tools'),
+        'lx_tools_field_cb_checkbox',
+        $section_sitemaps,
+        '在 sitemap 中隐藏标签列表'
+    );
+    
+
+
 }
 
 // function lx_tools_field_admin_head_cb($args)

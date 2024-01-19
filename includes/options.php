@@ -19,8 +19,10 @@ class LxToolsFileds
     public static $hide_plugin_update_tips = "lx_tools_field_hide_plugin_update_tips";
     // 隐藏 Admin Footer
     public static $hide_admin_footer = "lx_tools_field_hide_admin_footer";
-    // 支持文章缩略图
+    // 支持 文章 缩略图
     public static $support_thumbnail = "lx_tools_field_support_thumbnail";
+    // 禁用 文章 Feed
+    public static $disabled_feed = "lx_tools_field_disabled_feed";
     // 支持文章评论
     public static $support_comments = "lx_tools_field_support_comments";
     // 禁用登录页面语言切换器
@@ -43,6 +45,18 @@ class LxToolsFileds
     public static $disabled_gen_img_medium_large_2x = "lx_tools_field_disabled_gen_img_medium_large_2x";
     // 关闭 自动生成 其他大小的图片
     public static $disabled_gen_img_other_sizes = "lx_tools_field_disabled_gen_img_other_sizes";
+    // 关闭 站点地图
+    public static $disabled_sitemap = "lx_tools_field_disabled_sitemap";
+    // 关闭 站点地图 文章
+    public static $disabled_sitemap_posts = "lx_tools_field_disabled_sitemap_posts";
+    // 关闭 站点地图 用户
+    public static $disabled_sitemap_users = "lx_tools_field_disabled_sitemap_users";
+    // 关闭 站点地图 页面
+    public static $disabled_sitemap_pages = "lx_tools_field_disabled_sitemap_pages";
+    // 关闭 站点地图 分类
+    public static $disabled_sitemap_categories = "lx_tools_field_disabled_sitemap_categories";
+    // 关闭 站点地图 标签
+    public static $disabled_sitemap_tags = "lx_tools_field_disabled_sitemap_tags";
 }
 
 

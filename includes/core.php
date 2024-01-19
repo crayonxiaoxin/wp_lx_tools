@@ -94,6 +94,21 @@ if (lx_tools_option(LxToolsFileds::$hide_admin_footer)) {
 if (lx_tools_option(LxToolsFileds::$support_thumbnail)) {
     add_theme_support('post-thumbnails');
 }
+// 禁用文章 Feed
+if (lx_tools_option(LxToolsFileds::$disabled_feed)) {
+    function lx_disable_feed()
+    {
+        wp_die(__('本站不再提供 Feed，请访问 <a href="' . esc_url(home_url('/')) . '">首页</a>!'));
+    }
+
+    add_action('do_feed', 'lx_disable_feed', 1);
+    add_action('do_feed_rdf', 'lx_disable_feed', 1);
+    add_action('do_feed_rss', 'lx_disable_feed', 1);
+    add_action('do_feed_rss2', 'lx_disable_feed', 1);
+    add_action('do_feed_atom', 'lx_disable_feed', 1);
+    add_action('do_feed_rss2_comments', 'lx_disable_feed', 1);
+    add_action('do_feed_atom_comments', 'lx_disable_feed', 1);
+}
 
 // 禁用自动生成缩略图
 if (lx_tools_option(LxToolsFileds::$disabled_gen_img_thumb)) {
@@ -158,4 +173,57 @@ if (lx_tools_option(LxToolsFileds::$disabled_gen_img_other_sizes)) {
         remove_image_size('another-size');   // disable other add image sizes
     }
     add_action('init', 'lx_tools_disabled_gen_img_other_sizes');
+}
+// 禁用 sitemap
+if (lx_tools_option(LxToolsFileds::$disabled_sitemap)) {
+    add_filter('wp_sitemaps_enabled', '__return_false');
+}
+// 禁用 sitemap 分类
+if (lx_tools_option(LxToolsFileds::$disabled_sitemap_categories)) {
+    add_filter(
+        'wp_sitemaps_taxonomies',
+        function ($taxonomies) {
+            unset($taxonomies['category']);
+            return $taxonomies;
+        }
+    );
+}
+// 禁用 sitemap 标签
+if (lx_tools_option(LxToolsFileds::$disabled_sitemap_tags)) {
+    add_filter(
+        'wp_sitemaps_taxonomies',
+        function ($taxonomies) {
+            unset($taxonomies['post_tag']);
+            return $taxonomies;
+        }
+    );
+}
+// 禁用 sitemap 文章
+if (lx_tools_option(LxToolsFileds::$disabled_sitemap_posts)) {
+    add_filter(
+        'wp_sitemaps_post_types',
+        function ($post_types) {
+            unset($post_types['post']);
+            return $post_types;
+        }
+    );
+}
+// 禁用 sitemap 页面
+if (lx_tools_option(LxToolsFileds::$disabled_sitemap_pages)) {
+    add_filter(
+        'wp_sitemaps_post_types',
+        function ($post_types) {
+            unset($post_types['page']);
+            return $post_types;
+        }
+    );
+}
+// 禁用 sitemap 用户
+if (lx_tools_option(LxToolsFileds::$disabled_sitemap_users)) {
+    add_filter('wp_sitemaps_add_provider', function ($provider, $strName) {
+        if ('users' === $strName) {
+            return false;
+        }
+        return $provider;
+    }, 10, 2);
 }
