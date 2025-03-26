@@ -113,42 +113,42 @@ function lx_tools_settings_init()
         __('缩略图', 'lx_tools'),
         'lx_tools_field_cb_checkbox',
         $section_upload_imgs,
-        '禁用自动生成缩略图'
+        '禁用自动生成缩略图 (150px)'
     );
     lx_tools_setting_field(
         LxToolsFileds::$disabled_gen_img_medium,
         __('中等图', 'lx_tools'),
         'lx_tools_field_cb_checkbox',
         $section_upload_imgs,
-        '禁用自动生成中等图'
+        '禁用自动生成中等图 (300px)'
     );
     lx_tools_setting_field(
         LxToolsFileds::$disabled_gen_img_large,
         __('大图', 'lx_tools'),
         'lx_tools_field_cb_checkbox',
         $section_upload_imgs,
-        '禁用自动生成大图'
+        '禁用自动生成大图 (1024px)'
     );
     lx_tools_setting_field(
         LxToolsFileds::$disabled_gen_img_large_2x,
         __('大图 2x', 'lx_tools'),
         'lx_tools_field_cb_checkbox',
         $section_upload_imgs,
-        '禁用自动生成 2x 大图'
+        '禁用自动生成 2x 大图 (2048px)'
     );
     lx_tools_setting_field(
         LxToolsFileds::$disabled_gen_img_medium_large,
         __('中大图', 'lx_tools'),
         'lx_tools_field_cb_checkbox',
         $section_upload_imgs,
-        '禁用自动生成中大图'
+        '禁用自动生成中大图 (768px)'
     );
     lx_tools_setting_field(
         LxToolsFileds::$disabled_gen_img_medium_large_2x,
         __('中大图 2x', 'lx_tools'),
         'lx_tools_field_cb_checkbox',
         $section_upload_imgs,
-        '禁用自动生成 2x 中大图'
+        '禁用自动生成 2x 中大图 (1536px)'
     );
     lx_tools_setting_field(
         LxToolsFileds::$disabled_gen_img_other_sizes,
@@ -162,7 +162,7 @@ function lx_tools_settings_init()
         __('大图缩放', 'lx_tools'),
         'lx_tools_field_cb_checkbox',
         $section_upload_imgs,
-        '禁用大图片缩放，如超过 2560px'
+        '禁用大图片缩放 (2560px)'
     );
 
 
