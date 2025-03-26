@@ -158,8 +158,8 @@ function lx_tools_settings_init()
         '禁用自动生成其他尺寸图，例如由 `set_post_thumbnail_size()` 或 `add_image_size()` 生成的'
     );
     lx_tools_setting_field(
-        LxToolsFileds::$disabled_gen_img_other_sizes,
-        __('其他尺寸图', 'lx_tools'),
+        LxToolsFileds::$disabled_gen_img_scaled_size,
+        __('大图缩放', 'lx_tools'),
         'lx_tools_field_cb_checkbox',
         $section_upload_imgs,
         '禁用大图片缩放，如超过 2560px'

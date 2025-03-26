@@ -181,10 +181,7 @@ if (lx_tools_option(LxToolsFileds::$disabled_gen_img_other_sizes)) {
 }
 // 禁用大图缩放功能
 if (lx_tools_option(LxToolsFileds::$disabled_gen_img_scaled_size)) {
-    function lx_tools_disabled_gen_img_scaled_size()
-    {
-        radd_filter('big_image_size_threshold', '__return_false');
-    }
+    add_filter('big_image_size_threshold', '__return_false');
 }
 // 禁用 sitemap
 if (lx_tools_option(LxToolsFileds::$disabled_sitemap)) {
