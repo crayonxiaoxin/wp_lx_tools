@@ -19,6 +19,8 @@ class LxToolsFileds
     public static $hide_plugin_update_tips = "lx_tools_field_hide_plugin_update_tips";
     // 隐藏 Admin Footer
     public static $hide_admin_footer = "lx_tools_field_hide_admin_footer";
+    // 禁用 xmlrpc
+    public static $disabled_xmlrpc = "lx_tools_field_disabled_xmlrpc";
     // 支持 文章 缩略图
     public static $support_thumbnail = "lx_tools_field_support_thumbnail";
     // 禁用 文章 Feed
@@ -45,6 +47,8 @@ class LxToolsFileds
     public static $disabled_gen_img_medium_large_2x = "lx_tools_field_disabled_gen_img_medium_large_2x";
     // 关闭 自动生成 其他大小的图片
     public static $disabled_gen_img_other_sizes = "lx_tools_field_disabled_gen_img_other_sizes";
+    // 关闭 自动生成 缩放图片
+    public static $disabled_gen_img_scaled_size = "lx_tools_field_disabled_gen_img_scaled_size";
     // 关闭 站点地图
     public static $disabled_sitemap = "lx_tools_field_disabled_sitemap";
     // 关闭 站点地图 文章

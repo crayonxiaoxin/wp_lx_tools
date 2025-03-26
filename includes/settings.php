@@ -60,6 +60,13 @@ function lx_tools_settings_init()
         $section_general,
         '隐藏后台显示选项'
     );
+    lx_tools_setting_field(
+        LxToolsFileds::$disabled_xmlrpc,
+        __('禁用 xmlrpc', 'lx_tools'),
+        'lx_tools_field_cb_checkbox',
+        $section_general,
+        '禁用 xmlrpc.php 所有方法'
+    );
 
 
     lx_tools_setting_field(
@@ -150,6 +157,13 @@ function lx_tools_settings_init()
         $section_upload_imgs,
         '禁用自动生成其他尺寸图，例如由 `set_post_thumbnail_size()` 或 `add_image_size()` 生成的'
     );
+    lx_tools_setting_field(
+        LxToolsFileds::$disabled_gen_img_other_sizes,
+        __('其他尺寸图', 'lx_tools'),
+        'lx_tools_field_cb_checkbox',
+        $section_upload_imgs,
+        '禁用大图片缩放，如超过 2560px'
+    );
 
 
     lx_tools_setting_field(
@@ -194,9 +208,6 @@ function lx_tools_settings_init()
         $section_sitemaps,
         '在 sitemap 中隐藏标签列表'
     );
-    
-
-
 }
 
 // function lx_tools_field_admin_head_cb($args)
@@ -274,7 +285,7 @@ function lx_tools_options_page_html()
         }
     </style>
     <div class="wrap lx_tools-settings">
-        <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
+        <h1><a style="text-decoration: none;" href="https://github.com/crayonxiaoxin/wp_lx_tools" target="_blank"><?php echo esc_html(get_admin_page_title()); ?></a></h1>
         <?php
         if (!empty($sections) && count($sections) > 0) {
 

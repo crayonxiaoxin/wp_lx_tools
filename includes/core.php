@@ -43,6 +43,11 @@ if (lx_tools_option(LxToolsFileds::$hide_screen_tabs)) {
         add_filter('hidden_columns', '__return_empty_array');
     });
 }
+// 隐藏 xmlrpc.php
+if (lx_tools_option(LxToolsFileds::$disabled_xmlrpc)) {
+    add_filter('xmlrpc_enabled', '__return_false');
+    add_filter('xmlrpc_methods', 'remove_xmlrpc_methods');
+}
 // 禁用自动更新
 if (lx_tools_option(LxToolsFileds::$disabled_auto_update)) {
     // 关闭 自动更新
@@ -173,6 +178,13 @@ if (lx_tools_option(LxToolsFileds::$disabled_gen_img_other_sizes)) {
         remove_image_size('another-size');   // disable other add image sizes
     }
     add_action('init', 'lx_tools_disabled_gen_img_other_sizes');
+}
+// 禁用大图缩放功能
+if (lx_tools_option(LxToolsFileds::$disabled_gen_img_scaled_size)) {
+    function lx_tools_disabled_gen_img_scaled_size()
+    {
+        radd_filter('big_image_size_threshold', '__return_false');
+    }
 }
 // 禁用 sitemap
 if (lx_tools_option(LxToolsFileds::$disabled_sitemap)) {
