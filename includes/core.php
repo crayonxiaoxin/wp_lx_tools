@@ -141,7 +141,7 @@ if (lx_tools_option(LxToolsFileds::$disabled_gen_img_large)) {
         return $sizes;
     }
     add_action('intermediate_image_sizes_advanced', 'lx_tools_disabled_gen_img_large');
-    add_filter('big_image_size_threshold', '__return_false');
+    // add_filter('big_image_size_threshold', '__return_false');
 }
 // 禁用自动生成大图 2x
 if (lx_tools_option(LxToolsFileds::$disabled_gen_img_large_2x)) {
